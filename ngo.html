@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NGO Registration | Tairac Digital Solution</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e8ecf1;
+    }
+    header, footer {
+      background: #0c0c2b;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      color: #FFA726;
+      margin-bottom: 10px;
+    }
+    section {
+      padding: 40px 20px;
+      background-color: #fdf9f3;
+    }
+    .card {
+      background: #fff3e0;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 420px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+      border-left: 6px solid #FFA726;
+    }
+    .price {
+      color: #2e7d32;
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .btn {
+      background: #FFA726;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: #fb8c00;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .back-link a {
+      text-decoration: none;
+      color: #0c0c2b;
+      font-weight: bold;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<header class="animate__animated animate__fadeInDown">
+  <h1><i class="bi bi-globe me-2"></i>NGO Registration</h1>
+  <p>Register your Non-Governmental Organization with Tairac Digital Solution.</p>
+</header>
+
+<section>
+  <div class="text-center mb-4 animate__animated animate__fadeIn">
+    <p>Our expert services make it easy to register your NGO with CAC in Nigeria. Choose the package that fits your needs and budget below.</p>
+  </div>
+
+  <!-- Silver Package -->
+  <div class="card animate__animated animate__zoomIn">
+    <h2 class="text-center">Silver Package</h2>
+    <p>CAC of  incorporation, constitution, 2 newspaper publication, status report of ownership, letter headed paper in soft copy</p>
+    <p class="price">₦155,000</p>
+    <input type="email" id="email1" placeholder="Enter your email" />
+    <div class="btn-group">
+      <a href="https://wa.me/2348165050572?text=I%20want%20to%20apply%20for%20Silver%20NGO%20Registration" target="_blank" class="btn">Apply Now</a>
+      <button class="btn" onclick="payWithPaystack('email1', 155000)">Pay Now</button>
+    </div>
+  </div>
+
+  <!-- Gold Package -->
+  <div class="card animate__animated animate__zoomIn">
+    <h2 class="text-center">Gold Package</h2>
+    <p>CAC of  incorporation, constitution, 2 newspaper publication, status report of ownership, letter headed paper in hard copy</p>
+    <p class="price">₦160,000</p>
+    <input type="email" id="email2" placeholder="Enter your email" />
+    <div class="btn-group">
+      <a href="https://wa.me/2348165050572?text=I%20want%20to%20apply%20for%20Gold%20NGO%20Registration" target="_blank" class="btn">Apply Now</a>
+      <button class="btn" onclick="payWithPaystack('email2', 160000)">Pay Now</button>
+    </div>
+  </div>
+
+  <!-- Diamond Package -->
+  <div class="card animate__animated animate__zoomIn">
+    <h2 class="text-center">Diamond Package</h2>
+    <p>Framed CAC of  incorporation, constitution, 2 newspaper publication, status report of ownership, letter headed paper</p>
+    <p class="price">₦165,000</p>
+    <input type="email" id="email3" placeholder="Enter your email" />
+    <div class="btn-group">
+      <a href="https://wa.me/2348165050572?text=I%20want%20to%20apply%20for%20Diamond%20NGO%20Registration" target="_blank" class="btn">Apply Now</a>
+      <button class="btn" onclick="payWithPaystack('email3', 165000)">Pay Now</button>
+    </div>
+  </div>
+</section>
+
+<div class="back-link">
+  <a href="index.html"><i class="bi bi-house-fill me-1"></i>Back to Homepage</a>
+</div>
+
+<footer>
+  <p>Need assistance? <a href="https://wa.me/2348165050572" style="color: #FFA726;">Chat on WhatsApp</a></p>
+  <p>&copy; 2025 Tairac Digital Solution</p>
+</footer>
+
+<script>
+function payWithPaystack(emailFieldId, amount) {
+  var email = document.getElementById(emailFieldId).value;
+  if (!email) {
+    alert("Please enter your email");
+    return;
+  }
+
+  var handler = PaystackPop.setup({
+    key: 'pk_test_xxxxxxxxxxxxxxxxxxxxx', // Replace with your public key
+    email: email,
+    amount: amount * 100,
+    currency: 'NGN',
+    ref: '' + Math.floor(Math.random() * 1000000000 + 1),
+    callback: function(response){
+      alert('Payment complete! Reference: ' + response.reference + '\n\nPlease send your payment receipt to our WhatsApp to proceed.');
+      window.location.href = "https://wa.me/2348165050572?text=Hi,%20I%20just%20paid%20for%20an%20NGO%20Registration.%20Reference:%20" + response.reference;
+    },
+    onClose: function(){
+      alert('Transaction was cancelled');
+    }
+  });
+  handler.openIframe();
+}
+</script>
+
+</body>
+</html>

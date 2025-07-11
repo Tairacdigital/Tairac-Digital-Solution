@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get Started - Tairac Digital Solution</title>
+
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0c0c2b;
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #FFA726;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .link-box {
+      background: white;
+      margin: 20px auto;
+      padding: 30px;
+      max-width: 340px;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .link-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+    .link-box a {
+      text-decoration: none;
+      color: #0c0c2b;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: block;
+    }
+    footer {
+      background: #0c0c2b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .icon-box {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #FFA726;
+    }
+    #loading-spinner {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(12, 12, 43, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #loading-spinner img {
+      width: 90px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loading Spinner -->
+<div id="loading-spinner">
+  <img src="logo.png" alt="Loading...">
+</div>
+
+<header data-aos="fade-down">
+  <h1><i class="bi bi-person-badge-fill icon-box"></i> Get Started</h1>
+  <p class="lead">Choose the type of CAC registration you want to begin with</p>
+</header>
+
+<section class="section">
+  <div class="link-box" onclick="navigateWithSpinner('business.html')" data-aos="zoom-in">
+    <i class="bi bi-briefcase-fill icon-box"></i>
+    <div><a>Business Name Registration</a></div>
+  </div>
+  <div class="link-box" onclick="navigateWithSpinner('company.html')" data-aos="zoom-in" data-aos-delay="100">
+    <i class="bi bi-buildings-fill icon-box"></i>
+    <div><a>Company Registration</a></div>
+  </div>
+  <div class="link-box" onclick="navigateWithSpinner('ngo.html')" data-aos="zoom-in" data-aos-delay="200">
+    <i class="bi bi-people-fill icon-box"></i>
+    <div><a>NGO / Incorporated Trustees Registration</a></div>
+  </div>
+</section>
+
+<div class="text-center mb-5">
+  <a href="index.html" class="btn btn-outline-dark">
+    <i class="bi bi-house-fill me-1"></i> Back to Homepage
+  </a>
+</div>
+
+<footer>
+  <p>&copy; 2025 <strong>Tairac Digital Solution</strong>. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap & AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  window.addEventListener("load", function () {
+    const spinner = document.getElementById("loading-spinner");
+    if (spinner) {
+      spinner.style.opacity = 1;
+      setTimeout(() => {
+        spinner.style.transition = "opacity 0.5s ease";
+        spinner.style.opacity = 0;
+        setTimeout(() => spinner.style.display = "none", 500);
+      }, 500);
+    }
+  });
+
+  function navigateWithSpinner(url) {
+    const spinner = document.getElementById("loading-spinner");
+    spinner.style.display = "flex";
+    spinner.style.opacity = 1;
+    setTimeout(() => {
+      window.location.href = url;
+    }, 1000);
+  }
+</script>
+</body>
+</html>
